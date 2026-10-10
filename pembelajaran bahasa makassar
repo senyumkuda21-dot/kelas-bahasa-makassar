@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#087bd5">
+<meta name="description" content="Aplikasi pembelajaran Bahasa Makassar untuk siswa UPT SDN 10 Turatea.">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<title>KELAS OGI — Bahasa Makassar</title>
+<style>
+:root{--blue:#087bd5;--deep:#0755a2;--sky:#c9f2ff;--yellow:#ffd53d;--orange:#ff9f1c;--red:#ef4444;--ink:#17324d;--white:#fff;--green:#168a55}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:linear-gradient(180deg,#dff8ff,#fff9db);min-height:100vh}
+header{background:linear-gradient(120deg,#087bd5,#19bde7);color:white;padding:18px 16px 25px;border-radius:0 0 30px 30px;position:relative;overflow:hidden}
+header:before,header:after{content:"";position:absolute;border-radius:50%;background:#fff3;pointer-events:none}header:before{width:220px;height:220px;right:-70px;top:-100px}header:after{width:120px;height:120px;left:-35px;bottom:-70px}
+.topline{display:flex;justify-content:space-between;align-items:center;gap:12px;position:relative;z-index:1}.school{font-size:.78rem;font-weight:800;letter-spacing:.4px}.pill{border:1px solid #ffffff80;border-radius:999px;padding:7px 10px;font-size:.76rem;background:#ffffff20;color:white}
+.hero{position:relative;z-index:1;text-align:center;padding:22px 4px 4px}.seal{display:inline-grid;place-items:center;width:70px;height:70px;border:4px solid #fff;border-radius:50%;background:var(--yellow);color:#074c8a;font-size:2rem;box-shadow:0 5px 0 #0755a255}.hero h1{margin:8px 0 0;font-size:clamp(2rem,7vw,3.3rem);line-height:1;font-weight:1000;letter-spacing:-1px;text-shadow:2px 3px 0 #064c99}.hero h1 span{color:#ff4949}.subtitle{font-weight:900;color:#fff3a4;margin:9px 0 4px}.motto{font-size:.9rem;margin:0 auto;max-width:440px;color:white}
+.container{max-width:1000px;margin:auto;padding:18px 14px 35px}.home-screen{position:relative;isolation:isolate}.home-watermark{position:absolute;z-index:-1;top:47%;left:50%;transform:translate(-50%,-50%) rotate(-17deg);font-size:clamp(2.2rem,8vw,5.6rem);font-weight:1000;letter-spacing:3px;white-space:nowrap;color:#087bd5;opacity:.095;pointer-events:none;user-select:none}.welcome{display:flex;align-items:center;gap:12px;background:white;border-radius:20px;padding:14px;box-shadow:0 5px 0 #0b72b31a;margin-top:-2px}.mascot{font-size:3.4rem;flex-shrink:0;filter:drop-shadow(0 3px 0 #ffd53d)}.welcome h2{margin:0 0 4px;font-size:1.08rem}.welcome p{margin:0;font-size:.88rem;color:#526579;line-height:1.45}
+.menu{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0}.menu button{border:0;background:#fff;border-radius:20px;padding:15px 8px 13px;box-shadow:0 5px 0 #0b72b31a;cursor:pointer;color:var(--ink);font:inherit;font-weight:800;transition:.15s}.menu button:active{transform:translateY(3px);box-shadow:0 2px 0 #0b72b31a}.menu .bubble{display:grid;place-items:center;width:72px;height:72px;margin:0 auto 8px;border-radius:50%;font-size:2.2rem;border:4px solid white;box-shadow:0 0 0 3px #d5edff}.menu button:nth-child(1) .bubble{background:#ffe36e}.menu button:nth-child(2) .bubble{background:#a8f0c6}.menu button:nth-child(3) .bubble{background:#ffc5c5}.menu button:nth-child(4) .bubble{background:#b9e9ff}.menu small{display:block;font-weight:600;color:#6b7d8d;margin-top:3px}
+.section{display:none;background:#fff;border-radius:22px;padding:18px;box-shadow:0 5px 0 #0b72b31a;margin-top:16px}.section.active{display:block}.section h2{margin:0 0 8px;color:var(--deep)}.section p{line-height:1.55}.back{border:0;background:#e9f5ff;color:var(--deep);font-weight:800;padding:9px 13px;border-radius:12px;margin-bottom:12px;cursor:pointer}
+.grade-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.grade-tab{border:2px solid #cce8ff;background:#f2f9ff;color:#0755a2;border-radius:999px;padding:9px 17px;font-weight:900;cursor:pointer}.grade-tab.active{background:#087bd5;color:#fff;border-color:#087bd5}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px}.lesson{border:2px solid #e1f1ff;border-radius:17px;padding:13px;background:linear-gradient(160deg,#fff,#f3fbff)}.picture{font-size:2.7rem;text-align:center;background:#e5f8ff;border-radius:14px;padding:8px;margin-bottom:8px}.lesson h3{margin:5px 0;font-size:1rem}.word{font-size:1.1rem;font-weight:900;color:#087bd5}.meaning{font-size:.88rem;color:#526579}.action{border:0;background:var(--blue);color:white;border-radius:12px;padding:9px 12px;font-weight:800;cursor:pointer;margin-top:8px}.action.yellow{background:var(--yellow);color:#624b00}.note{background:#fff6cf;border-left:4px solid var(--yellow);padding:11px;border-radius:10px;font-size:.9rem;margin:12px 0}.quiz-question{border:1px solid #dbeeff;border-radius:15px;padding:14px;margin:12px 0}.quiz-question h3{margin:0 0 10px;font-size:1rem}.opt{display:block;padding:9px;margin:6px 0;background:#f2f9ff;border-radius:10px;cursor:pointer}.opt input{margin-right:8px}.result{padding:15px;border-radius:14px;background:#e5f8ed;color:#12643b;font-weight:800;margin-top:12px}.video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.video-card{background:#f2f9ff;border-radius:15px;padding:14px}.video-card .big{font-size:2rem}.video-card a{color:#0755a2;font-weight:800}.footer{text-align:center;font-size:.8rem;color:#678;margin-top:24px}.install{display:none;background:#ffd53d;color:#604900;border:0;padding:9px 12px;border-radius:12px;font-weight:900;cursor:pointer}.install.show{display:inline-block}
+@media(min-width:650px){.menu{grid-template-columns:repeat(4,minmax(0,1fr))}.welcome{padding:18px 22px}.hero{padding-top:28px}}
+</style>
+</head>
+<body>
+<header>
+ <div class="topline"><div class="school">🏫 UPT SDN 10 TURATEA</div><button id="installBtn" class="install">＋ Pasang Aplikasi</button><span class="pill">Belajar • Bermain • Makessing</span></div>
+ <div class="hero"><div class="seal">📚</div><h1>KELAS <span>OGI</span></h1><div class="subtitle">Bahasa Makassar</div><p class="motto">“Mabbicara Makassar, appakabaji budaya”<br><small>Belajar bahasa daerah, menjaga budaya</small></p></div>
+</header>
+<main class="container">
+ <div id="homeScreen" class="home-screen">
+ <div class="home-watermark" aria-hidden="true">DWI SANGBAYU</div>
+ <div class="welcome"><div class="mascot">👦🏻👧🏽</div><div><h2>Assalamu Alaikum, Anak-anak! 🌟</h2><p>Ayo belajar Bahasa Makassar lewat gambar, suara, video, dan kuis seru. Pilih menu di bawah untuk mulai.</p></div></div>
+ <nav class="menu" aria-label="Menu utama">
+  <button data-open="materi"><span class="bubble">📖</span>Materi Belajar<small>Kosakata bergambar</small></button>
+  <button data-open="audio"><span class="bubble">🔊</span>Dengar Suara<small>Latihan pengucapan</small></button>
+  <button data-open="kuis"><span class="bubble">🧩</span>Kuis Pintar<small>Nilai otomatis</small></button>
+  <button data-open="video"><span class="bubble">🎬</span>Video Belajar<small>Belajar lewat video</small></button>
+ </nav>
+ <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px"><button class="action yellow" data-open="profil">👤 Profil Pengembang</button><button class="action" data-open="petunjuk">❔ Petunjuk Penggunaan</button></div>
+ </div>
+ <section id="materi" class="section"><button class="back" data-home>← Kembali</button><h2>📖 Materi Bahasa Makassar</h2><p>Pilih tingkat kelas untuk melihat materi. Makna dan variasi pemakaian dapat berbeda menurut daerah/keluarga; guru atau penutur lokal sebaiknya memeriksa materi sebelum dipakai sebagai acuan resmi.</p><div class="grade-tabs" role="group" aria-label="Pilih kelas"><button class="grade-tab active" data-grade="4">Kelas 4</button><button class="grade-tab" data-grade="5">Kelas 5</button><button class="grade-tab" data-grade="6">Kelas 6</button></div><p id="gradeDescription" class="note">Kelas 4: kosakata dasar dan lingkungan sekitar.</p><div id="lessonCards" class="cards"></div></section>
+ <section id="audio" class="section"><button class="back" data-home>← Kembali</button><h2>🔊 Dengarkan Pengucapan</h2><p>Tekan tombol suara untuk mendengar pembacaan dari mesin suara perangkat. Suara yang tersedia biasanya memakai Bahasa Indonesia, bukan suara penutur asli Makassar.</p><div class="note">Tip: dengarkan, lalu ulangi bersama guru. Pelafalan otomatis mungkin kurang tepat untuk kata Bahasa Makassar.</div><div class="grade-tabs" role="group" aria-label="Pilih kelas audio"><button class="grade-tab active" data-audio-grade="4">Kelas 4</button><button class="grade-tab" data-audio-grade="5">Kelas 5</button><button class="grade-tab" data-audio-grade="6">Kelas 6</button></div><div id="audioCards" class="cards"></div></section>
+ <section id="kuis" class="section"><button class="back" data-home>← Kembali</button><h2>🧩 Kuis Pintar</h2><p>Pilih satu jawaban pada setiap soal, lalu tekan “Periksa Nilai”.</p><form id="quizForm"></form><button class="action" id="checkQuiz">Periksa Nilai</button> <button class="action yellow" id="retryQuiz">Ulangi Kuis</button><div id="quizResult" aria-live="polite"></div></section>
+ <section id="video" class="section"><button class="back" data-home>← Kembali</button><h2>🎬 Video Pembelajaran</h2><p>Pilih pencarian video berikut. Video diputar dari YouTube, sehingga memerlukan koneksi internet.</p><div class="video-grid"><div class="video-card"><div class="big">👋</div><h3>Salam dan sapaan</h3><a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=belajar+bahasa+Makassar+salam+sapaan">Cari video ↗</a></div><div class="video-card"><div class="big">🗣️</div><h3>Percakapan sehari-hari</h3><a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=percakapan+bahasa+Makassar+sehari+hari">Cari video ↗</a></div><div class="video-card"><div class="big">🏡</div><h3>Kosakata keluarga</h3><a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=kosakata+bahasa+Makassar+keluarga">Cari video ↗</a></div><div class="video-card"><div class="big">🎵</div><h3>Budaya dan ungkapan</h3><a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=belajar+ungkapan+bahasa+Makassar+budaya">Cari video ↗</a></div></div></section>
+ <section id="profil" class="section"><button class="back" data-home>← Kembali</button><h2>👩‍🏫 Profil Aplikasi</h2><p><b>Nama aplikasi:</b> KELAS OGI — Bahasa Makassar</p><p><b>Satuan pendidikan:</b> UPT SDN 10 Turatea</p><p><b>Tujuan:</b> membantu siswa mengenal kosakata dan budaya lokal melalui media digital.</p><p><b>Catatan:</b> materi contoh ini merupakan bahan awal pembelajaran, bukan kamus resmi. Silakan sesuaikan dengan modul ajar sekolah dan verifikasi bahasa bersama guru/penutur lokal.</p></section>
+ <section id="petunjuk" class="section"><button class="back" data-home>← Kembali</button><h2>❔ Petunjuk Penggunaan</h2><ol><li>Pilih menu Materi Belajar untuk membaca contoh kosakata.</li><li>Pilih Dengar Suara untuk mendengar pembacaan kata.</li><li>Kerjakan Kuis Pintar dan tekan Periksa Nilai.</li><li>Pilih Video Belajar untuk mencari video pembelajaran di YouTube.</li><li>Untuk memasang aplikasi, buka situs melalui Chrome Android lalu pilih menu ⋮ → “Tambahkan ke layar utama” atau “Instal aplikasi” jika tersedia.</li></ol></section>
+ <footer class="footer">© <span id="year"></span> UPT SDN 10 Turatea • Media pembelajaran Bahasa Makassar</footer>
+</main>
+<script>
+const lessons=[
+ {grade:4,emoji:"👋",topic:"Salam",word:"Assalamu alaikum",meaning:"Salam pembuka yang digunakan dalam pergaulan sehari-hari."},
+ {grade:4,emoji:"🙏",topic:"Ungkapan",word:"Kurru sumanga’",meaning:"Ungkapan terima kasih; bentuk dan konteksnya perlu diverifikasi oleh guru lokal."},
+ {grade:4,emoji:"👩‍👧",topic:"Keluarga",word:"Amma’",meaning:"Ibu; penggunaan dapat berbeda menurut konteks keluarga."},
+ {grade:4,emoji:"👨",topic:"Keluarga",word:"Bapa’",meaning:"Ayah; variasi ejaan/pengucapan dapat ditemukan."},
+ {grade:4,emoji:"🏠",topic:"Tempat",word:"Balla’",meaning:"Rumah."},
+ {grade:4,emoji:"💧",topic:"Benda",word:"Je’ne",meaning:"Air."},
+ {grade:4,emoji:"🍚",topic:"Makanan",word:"Kanre",meaning:"Makanan/nasi, bergantung konteks."},
+ {grade:4,emoji:"😊",topic:"Sapaan",word:"Apa kareba?",meaning:"Sapaan yang menanyakan kabar; penggunaan dapat dipengaruhi ragam lokal."},
+ {grade:5,emoji:"🏫",topic:"Sekolah",word:"Sikola",meaning:"Sekolah; pelajari pemakaian kata dalam kalimat bersama guru."},
+ {grade:5,emoji:"📚",topic:"Benda",word:"Buku",meaning:"Buku; bandingkan kata serapan dan penggunaan sehari-hari."},
+ {grade:5,emoji:"👫",topic:"Pertemanan",word:"Sikali’basa",meaning:"Contoh ungkapan terkait kebersamaan; mohon validasi penutur lokal sebelum diajarkan."},
+ {grade:5,emoji:"🌳",topic:"Lingkungan",word:"Tangke",meaning:"Cabang/ranting dalam sejumlah penggunaan; verifikasi ragam setempat."},
+ {grade:5,emoji:"🌞",topic:"Alam",word:"Allo",meaning:"Hari/matahari, bergantung konteks."},
+ {grade:5,emoji:"🌙",topic:"Alam",word:"Bulan",meaning:"Bulan; makna dan bentuk dapat mengikuti konteks kalimat."},
+ {grade:5,emoji:"🐟",topic:"Hewan",word:"Juku’",meaning:"Ikan."},
+ {grade:5,emoji:"🐔",topic:"Hewan",word:"Manu’",meaning:"Ayam."},
+ {grade:6,emoji:"🗣️",topic:"Percakapan",word:"Apa kareba?",meaning:"Sapaan untuk menanyakan kabar; latih dialog dua arah."},
+ {grade:6,emoji:"🤝",topic:"Sopan santun",word:"Tabe’",meaning:"Ungkapan santun saat meminta izin atau lewat; perhatikan konteks."},
+ {grade:6,emoji:"💛",topic:"Nilai budaya",word:"Sipakatau",meaning:"Saling memanusiakan dan menghargai sesama."},
+ {grade:6,emoji:"🧭",topic:"Nilai budaya",word:"Sipakainga’",meaning:"Saling mengingatkan dalam kebaikan."},
+ {grade:6,emoji:"🌱",topic:"Nilai budaya",word:"Sikatutui",meaning:"Saling menjaga; cocok dibahas sebagai nilai kebersamaan setempat."},
+ {grade:6,emoji:"🎭",topic:"Budaya",word:"Kelong",meaning:"Lagu/nyanyian tradisional; kenali contoh melalui guru atau pelaku budaya."},
+ {grade:6,emoji:"🥁",topic:"Seni",word:"Gandrang",meaning:"Gendang dalam tradisi seni Sulawesi Selatan."},
+ {grade:6,emoji:"🏡",topic:"Lingkungan",word:"Balla’",meaning:"Rumah; gunakan dalam percakapan sederhana tentang tempat tinggal."}
+];
+let selectedGrade=4, selectedAudioGrade=4;
+const gradeDescriptions={4:'Kelas 4: kosakata dasar, salam, keluarga, benda, dan lingkungan sekitar.',5:'Kelas 5: kosakata sekolah, hewan, alam, dan percakapan sederhana.',6:'Kelas 6: percakapan, sopan santun, nilai budaya, dan seni tradisional.'};
+function renderLessons(){const items=lessons.filter(x=>x.grade===selectedGrade);lessonCards.innerHTML=items.map(x=>`<article class="lesson"><div class="picture">${x.emoji}</div><div class="meaning">Kelas ${x.grade} • ${x.topic}</div><h3 class="word">${x.word}</h3><div class="meaning">${x.meaning}</div><button class="action say" data-say="${x.word.replaceAll('"','&quot;')}">🔊 Dengarkan</button></article>`).join('');document.getElementById('gradeDescription').textContent=gradeDescriptions[selectedGrade];document.querySelectorAll('[data-grade]').forEach(b=>b.classList.toggle('active',Number(b.dataset.grade)===selectedGrade));}
+function renderAudio(){const items=lessons.filter(x=>x.grade===selectedAudioGrade);document.getElementById('audioCards').innerHTML=items.map(x=>`<article class="lesson"><div class="picture">${x.emoji}</div><div class="meaning">Kelas ${x.grade} • ${x.topic}</div><h3>${x.word}</h3><button class="action say" data-say="${x.word.replaceAll('"','&quot;')}">▶ Putar suara</button></article>`).join('');document.querySelectorAll('[data-audio-grade]').forEach(b=>b.classList.toggle('active',Number(b.dataset.audioGrade)===selectedAudioGrade));}
+const lessonCards=document.getElementById('lessonCards');
+renderLessons();renderAudio();
+document.querySelectorAll('[data-grade]').forEach(b=>b.addEventListener('click',()=>{selectedGrade=Number(b.dataset.grade);renderLessons();}));
+document.querySelectorAll('[data-audio-grade]').forEach(b=>b.addEventListener('click',()=>{selectedAudioGrade=Number(b.dataset.audioGrade);renderAudio();}));
+function speak(text){if(!('speechSynthesis'in window)){alert('Browser ini belum mendukung fitur suara.');return;}speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='id-ID';u.rate=.82;u.pitch=1; speechSynthesis.speak(u);}
+document.addEventListener('click',e=>{const s=e.target.closest('[data-say]');if(s)speak(s.dataset.say);});
+const questions=[
+ {q:"Apa arti kata “Balla’” pada materi?",o:["Rumah","Air","Makanan","Ayah"],a:0},
+ {q:"Kata “Je’ne” berkaitan dengan benda apa?",o:["Buku","Air","Rumah","Pintu"],a:1},
+ {q:"Ungkapan “Assalamu alaikum” biasa digunakan sebagai …",o:["Salam pembuka","Nama tempat","Nama makanan","Ucapan tidur"],a:0},
+ {q:"Kata “Amma’” pada contoh materi merujuk kepada …",o:["Kakak","Ayah","Ibu","Teman"],a:2},
+ {q:"Apa yang sebaiknya dilakukan jika ragu terhadap arti atau pelafalan kosakata daerah?",o:["Menebak saja","Memeriksa dengan guru/penutur lokal","Menghapus semua materi","Mengabaikannya"],a:1},
+ {q:"Video pembelajaran pada menu Video Belajar dibuka melalui …",o:["Kalkulator","YouTube","Kamera saja","Galeri foto"],a:1},
+ {q:"Fitur Periksa Nilai digunakan untuk …",o:["Mengganti nama sekolah","Menghitung hasil kuis","Memutar video","Mengubah warna"],a:1},
+ {q:"Aplikasi ini dibuat untuk mendukung pembelajaran di …",o:["UPT SDN 10 Turatea","Rumah sakit","Terminal","Pasar"],a:0},
+ {q:"Tekan tombol Dengarkan untuk …",o:["Mencetak lembar","Mendengar pembacaan kata","Menghapus soal","Menutup aplikasi"],a:1},
+ {q:"Materi Bahasa Makassar pada aplikasi ini sebaiknya …",o:["Tidak pernah diperiksa","Diverifikasi dengan guru/penutur lokal","Dianggap kamus resmi","Diganti semua dengan bahasa asing"],a:1}
+];
+const quizForm=document.getElementById('quizForm');
+function renderQuiz(){quizForm.innerHTML=questions.map((q,i)=>`<div class="quiz-question"><h3>${i+1}. ${q.q}</h3>${q.o.map((o,j)=>`<label class="opt"><input type="radio" name="q${i}" value="${j}"> ${String.fromCharCode(65+j)}. ${o}</label>`).join('')}</div>`).join('');document.getElementById('quizResult').innerHTML='';}
+renderQuiz();
+document.getElementById('checkQuiz').addEventListener('click',()=>{let score=0,answered=0;questions.forEach((q,i)=>{const a=quizForm.querySelector(`input[name="q${i}"]:checked`);if(a){answered++;if(Number(a.value)===q.a)score++;}});const percent=Math.round(score/questions.length*100);document.getElementById('quizResult').innerHTML=`<div class="result">Nilai kamu: ${percent}/100<br>Jawaban benar: ${score} dari ${questions.length}<br>Soal dijawab: ${answered} dari ${questions.length}<br>${percent>=80?'Hebat! Terus pertahankan! 🌟':percent>=60?'Bagus, ayo belajar lagi! 💪':'Jangan menyerah, pelajari materi lalu coba lagi! 📚'}</div>`;});
+document.getElementById('retryQuiz').addEventListener('click',renderQuiz);
+function show(id){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.getElementById('homeScreen').style.display=id?'none':'';if(id){document.getElementById(id)?.classList.add('active');document.getElementById(id)?.scrollIntoView({behavior:'smooth',block:'start'});}else window.scrollTo({top:0,behavior:'smooth'});}
+document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>show(b.dataset.open)));
+document.querySelectorAll('[data-home]').forEach(b=>b.addEventListener('click',()=>show(null)));
+document.getElementById('year').textContent=new Date().getFullYear();
+let installPrompt=null;const installBtn=document.getElementById('installBtn');
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installPrompt=e;installBtn.classList.add('show');});
+installBtn.addEventListener('click',async()=>{if(!installPrompt){alert('Jika tombol instal belum tersedia, buka menu ⋮ Chrome lalu pilih Tambahkan ke layar utama.');return;}installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;installBtn.classList.remove('show');});
+if('serviceWorker'in navigator && location.protocol.startsWith('http'))window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(console.warn));
+</script>
+</body>
+</html>
+{
+  "id": "./",
+  "name": "KELAS OGI — Bahasa Makassar",
+  "short_name": "KELAS OGI",
+  "description": "Media pembelajaran Bahasa Makassar UPT SDN 10 Turatea",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#dff8ff",
+  "theme_color": "#087bd5",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
+# KELAS OGI — Bahasa Makassar
+Aplikasi pembelajaran web/PWA untuk UPT SDN 10 Turatea.
+
+## Isi folder
+- `index.html`: aplikasi lengkap (tampilan, materi kelas 4–6, audio browser, kuis otomatis, tautan pencarian video).
+- `manifest.json`: identitas aplikasi yang dapat dipasang.
+- `sw.js`: cache offline dasar.
+- `icons/`: ikon aplikasi 192px dan 512px.
+
+## Uji coba lokal
+1. Ekstrak ZIP.
+2. Buka folder di komputer.
+3. Jalankan server lokal (direkomendasikan) dengan Python: `python -m http.server 8000`
+4. Buka `http://localhost:8000` pada browser.
+   Membuka `index.html` langsung tetap bisa untuk fitur utama, tetapi PWA/service worker perlu HTTP/HTTPS.
+
+## Publikasi gratis melalui GitHub Pages
+1. Masuk ke GitHub dan buat repository baru, misalnya `kelas-ogi-makassar`.
+2. Unggah semua isi folder ini ke akar repository, termasuk `index.html`, `manifest.json`, `sw.js`, dan folder `icons`.
+3. Buka **Settings → Pages**.
+4. Pada **Build and deployment**, pilih **Deploy from a branch**.
+5. Pilih branch `main` dan folder `/(root)`, lalu tekan **Save**.
+6. Tunggu publikasi selesai. Alamat biasanya `https://NAMA-USERNAME.github.io/kelas-ogi-makassar/`.
+7. Buka alamat HTTPS itu di Chrome Android. Pilih menu ⋮ → **Tambahkan ke layar utama** atau **Instal aplikasi** jika tersedia.
+
+## Catatan
+- GitHub Pages membuat situs publik. Jangan unggah data pribadi siswa atau nilai yang mengidentifikasi siswa.
+- Audio menggunakan speech synthesis browser dengan locale `id-ID`; belum tentu tersedia suara asli Bahasa Makassar. Untuk pembelajaran formal, ganti/validasi kata dan audio dengan guru/penutur lokal.
+- Video memakai tautan pencarian YouTube; guru dapat menggantinya dengan tautan video yang sudah diperiksa.
+- Materi contoh dibagi ke Kelas 4, 5, dan 6; kosakata/ungkapan yang belum pasti wajib divalidasi guru atau penutur Makassar setempat.
+- Watermark nama **DWI SANGBAYU** tampil samar pada beranda.
+- Skor kuis dihitung di perangkat, tidak disimpan atau dikirim ke guru.
+- Ini PWA, bukan file APK mandiri. Untuk APK/Play Store, perlu proses pembungkusan tambahan dan pengujian tersendiri.
+
+const CACHE='kelas-ogi-makassar-v2';
+const FILES=['./','./index.html','./manifest.json','./icons/icon-192.png','./icons/icon-512.png'];
+self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES)));self.skipWaiting();});
+self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});
+self.addEventListener('fetch',event=>{if(event.request.method!=='GET')return;event.respondWith(caches.match(event.request).then(cached=>cached||fetch(event.request).then(response=>{const copy=response.clone();caches.open(CACHE).then(c=>c.put(event.request,copy));return response;}).catch(()=>caches.match('./index.html'))));});
